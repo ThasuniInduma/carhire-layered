@@ -4,6 +4,9 @@
  */
 package carhire.layered;
 
+import carhire.layered.view.DashboardPanel;
+import carhire.layered.view.LoginPanel;
+
 /**
  *
  * @author ASUS
@@ -14,7 +17,8 @@ public class CarhireLayered {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Hello");
+        //new LoginPanel().setVisible(true);
+        new DashboardPanel().setVisible(true);
     }
     
 }
