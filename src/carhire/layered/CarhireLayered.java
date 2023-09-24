@@ -17,8 +17,8 @@ public class CarhireLayered {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //new LoginPanel().setVisible(true);
-        new DashboardPanel().setVisible(true);
+        new LoginPanel().setVisible(true);
+        //new DashboardPanel().setVisible(true);
     }
     
 }

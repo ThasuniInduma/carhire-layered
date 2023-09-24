@@ -4,6 +4,15 @@
  */
 package carhire.layered.view;
 
+import carhire.layered.dao.CrudUtil;
+import carhire.layered.db.DBConnection;
+import java.awt.event.ActionEvent;
+import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -228,13 +237,20 @@ public class LoginPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        String userName = userNameText.getText();
-        String password = passwordText.getText();
-        
-        if(userName.equals("abc")&&password.equals("1234")){
-             new DashboardPanel().setVisible(true);
-        }else{
+        try {
+            /*String userName = userNameText.getText();
+            String password = passwordText.getText();
+            
+            if(userName.equals("abc")&&password.equals("1234")){
+            new DashboardPanel().setVisible(true);
+            }else{
             JOptionPane.showMessageDialog(this,"Password do not correct");
+            }*/
+            loginOnAction();
+        } catch (IOException ex) {
+            Logger.getLogger(LoginPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 
@@ -243,7 +259,7 @@ public class LoginPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_userNameTextActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-       new DashboardPanel().setVisible(true);
+       loadUserAccPanel();
     }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
@@ -278,6 +294,7 @@ public class LoginPanel extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LoginPanel().setVisible(true);
+                new LoginPanel().setLocationRelativeTo(null);
             }
         });
     }
@@ -301,6 +318,37 @@ public class LoginPanel extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void loadDashboardPanel() {
+        new DashboardPanel().setLocationRelativeTo(null);
         new DashboardPanel().setVisible(true);
+        this.dispose();
+    }
+    public void loginOnAction() throws IOException, SQLException {
+        
+        String user = userNameText.getText();
+        String pw = String.valueOf(passwordText.getPassword());
+        
+        PreparedStatement ps;
+        ResultSet rst;
+        
+        String query = "SELECT*FROM user WHERE name = ? AND password = ?";
+        
+        if(user.trim().toLowerCase().equals("name") || pw.trim().toLowerCase().equals("password")){
+            System.out.println("Enter a valid username & password");
+        }else {
+            ps = DBConnection.getInstance().getConnection().prepareStatement(query);
+            ps.setString(1, user);
+            ps.setString(2, pw);
+            rst = ps.executeQuery();
+            if(rst.next()){
+                loadDashboardPanel();
+            }else{
+                JOptionPane.showMessageDialog(this,"Invalid username or password");
+            }
+        }
+    }
+
+    private void loadUserAccPanel() {
+        this.dispose();
+        new UserAccPanel().setVisible(true);
     }
 }

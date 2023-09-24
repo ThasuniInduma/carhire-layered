@@ -304,7 +304,7 @@ public class DashboardPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_categoryLabelMouseClicked
 
     private void logoutLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabel1MouseClicked
-
+        this.dispose();
         new LoginPanel().setVisible(true);
     }//GEN-LAST:event_logoutLabel1MouseClicked
 

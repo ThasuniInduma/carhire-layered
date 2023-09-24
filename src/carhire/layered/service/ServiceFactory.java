@@ -4,7 +4,13 @@
  */
 package carhire.layered.service;
 
+
+import carhire.layered.dao.DaoFactory;
+import carhire.layered.service.custom.UserService;
+import carhire.layered.service.custom.impl.CarCategoryServiceImpl;
+import carhire.layered.service.custom.impl.CarServiceImpl;
 import carhire.layered.service.custom.impl.CustomerServiceImpl;
+import carhire.layered.service.custom.impl.UserServiceImpl;
 
 /**
  *
@@ -26,16 +32,19 @@ public class ServiceFactory {
         switch(type){
             case CUSTOMER:
                 return new CustomerServiceImpl();
-            /*case ITEM:
-                return new ItemServiceImpl();
-            case ORDER:
-                return new OrderServiceImpl();*/
+            case CAR:
+                return new CarServiceImpl();
+            case USER:
+                return new UserServiceImpl();
+            case CATEGORY:
+                return new CarCategoryServiceImpl();
             default:
                 return null;
         }
     }
+
     
     public enum ServiceType{
-        CUSTOMER // ITEM, ORDER
+        CUSTOMER, CAR, USER, CATEGORY// ORDER
     }
 }

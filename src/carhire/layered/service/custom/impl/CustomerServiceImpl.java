@@ -35,7 +35,7 @@ public class CustomerServiceImpl implements CustomerService{
         CustomerEntity customerEntity = new CustomerEntity(dto.getId(), dto.getName(), dto.getNic(), dto.getAddress(), dto.getPhoneNo());
         
         if(customerDao.update(customerEntity)){
-            return "successfully added";
+            return "successfully updated";
         }else{
             return "fail";
         }
