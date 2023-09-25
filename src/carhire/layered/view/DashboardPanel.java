@@ -313,6 +313,7 @@ public class DashboardPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_carLabelMouseClicked
 
     private void customerLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customerLabelMouseClicked
+        
         loadCustomerPanel();
     }//GEN-LAST:event_customerLabelMouseClicked
 

@@ -30,7 +30,6 @@ public class CarDaoImpl implements CarDao{
         return CrudUtil.executeUpdate("DELETE FROM car WHERE Id = ?",id);
     }
 
-    @Override
     public CarEntity get(String id) throws Exception {
         ResultSet rst = CrudUtil.executeQuery("SELECT*FROM car WHERE Id = ?", id);
         
@@ -48,7 +47,6 @@ public class CarDaoImpl implements CarDao{
         return null;
     }
 
-    @Override
     public ArrayList<CarEntity> getAll() throws Exception {
         ArrayList<CarEntity> carEntitys = new ArrayList<>();
         

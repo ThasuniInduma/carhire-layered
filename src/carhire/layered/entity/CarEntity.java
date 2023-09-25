@@ -21,7 +21,7 @@ public class CarEntity {
     private Integer year;
     private String vehicleNum;
     private String available;
-    private CarCategory categoryid;
+    private Integer categoryid;
 
     public CarEntity() {
     }
@@ -38,6 +38,137 @@ public class CarEntity {
         
     }
 
+    /**
+     * @return the id
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the model
+     */
+    public String getModel() {
+        return model;
+    }
+
+    /**
+     * @param model the model to set
+     */
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    /**
+     * @return the brand
+     */
+    public String getBrand() {
+        return brand;
+    }
+
+    /**
+     * @param brand the brand to set
+     */
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    /**
+     * @return the type
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * @param type the type to set
+     */
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    /**
+     * @return the pay
+     */
+    public String getPay() {
+        return pay;
+    }
+
+    /**
+     * @param pay the pay to set
+     */
+    public void setPay(String pay) {
+        this.pay = pay;
+    }
+
+    /**
+     * @return the year
+     */
+    public Integer getYear() {
+        return year;
+    }
+
+    /**
+     * @param year the year to set
+     */
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    /**
+     * @return the vehicleNum
+     */
+    public String getVehicleNum() {
+        return vehicleNum;
+    }
+
+    /**
+     * @param vehicleNum the vehicleNum to set
+     */
+    public void setVehicleNum(String vehicleNum) {
+        this.vehicleNum = vehicleNum;
+    }
+
+    /**
+     * @return the available
+     */
+    public String getAvailable() {
+        return available;
+    }
+
+    /**
+     * @param available the available to set
+     */
+    public void setAvailable(String available) {
+        this.available = available;
+    }
+
+    /**
+     * @return the categoryid
+     */
+    public Integer getCategoryid() {
+        return categoryid;
+    }
+
+    /**
+     * @param categoryid the categoryid to set
+     */
+    public void setCategoryid(Integer categoryid) {
+        this.categoryid = categoryid;
+    }
+
+    @Override
+    public String toString() {
+        return "CarEntity{" + "id=" + id + ", model=" + model + ", brand=" + brand + ", type=" + type + ", pay=" + pay + ", year=" + year + ", vehicleNum=" + vehicleNum + ", available=" + available + ", categoryid=" + categoryid + '}';
+    }
+    
     
   
 }
