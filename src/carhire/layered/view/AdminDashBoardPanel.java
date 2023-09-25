@@ -3,27 +3,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package carhire.layered.view;
-
 import carhire.layered.dao.CrudUtil;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author ASUS
  */
-public class DashboardPanel extends javax.swing.JFrame {
+public class AdminDashBoardPanel extends javax.swing.JFrame {
 
     /**
-     * Creates new form DashboadPanel
+     * Creates new form AdminDashBoardPanel
      */
-    public DashboardPanel() {
+    public AdminDashBoardPanel() {
         initComponents();
     }
-   
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -317,64 +315,33 @@ public class DashboardPanel extends javax.swing.JFrame {
         loadCarCategoryPanel();
     }//GEN-LAST:event_categoryLabelMouseClicked
 
-    private void logoutLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabel1MouseClicked
-        this.dispose();
-        new LoginPanel().setVisible(true);
-    }//GEN-LAST:event_logoutLabel1MouseClicked
-
     private void carLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carLabelMouseClicked
         loadCarPanel();
     }//GEN-LAST:event_carLabelMouseClicked
 
     private void customerLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customerLabelMouseClicked
-        String id = jLabel6.getText();
-        try {
-            ResultSet rs = CrudUtil.executeQuery("SELECT*FROM customer WHERE Customer_id = ?",id);
-            if(rs.next() == false){
-                JOptionPane.showMessageDialog(this, "Only for Owner");
-            }else{
-                String a = rs.getString("Name");
-                
-                if(a.equals("Owner")){
-                    loadCustomerPanel();
-                }else{
-                    JOptionPane.showMessageDialog(this, "Owner Only");
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DashboardPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        //loadCustomerPanel();
+        
+        loadCustomerPanel();
     }//GEN-LAST:event_customerLabelMouseClicked
 
     private void bookLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookLabelMouseClicked
         loadBookingPanel();
     }//GEN-LAST:event_bookLabelMouseClicked
 
+    private void logoutLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabel1MouseClicked
+        this.dispose();
+        new LoginPanel().setVisible(true);
+    }//GEN-LAST:event_logoutLabel1MouseClicked
+
     private void carsPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carsPanelMouseClicked
         loadCarPanel();
     }//GEN-LAST:event_carsPanelMouseClicked
 
     private void customersPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_customersPanelMouseClicked
-       
-        String id = jLabel6.getText();
-        try {
-            ResultSet rs = CrudUtil.executeQuery("SELECT*FROM customer WHERE Customer_id = ?",id);
-            if(rs.next() == false){
-                JOptionPane.showMessageDialog(this, "Only for Owner");
-            }else{
-                String a = rs.getString("Name");
-                
-                if(a.equals("Owner")){
-                    loadCustomerPanel();
-                }else{
-                    JOptionPane.showMessageDialog(this, "Owner Only");
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DashboardPanel.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
         
+                    loadCustomerPanel();
+                
     }//GEN-LAST:event_customersPanelMouseClicked
 
     private void bookedPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookedPanelMouseClicked
@@ -398,21 +365,20 @@ public class DashboardPanel extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DashboardPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminDashBoardPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DashboardPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminDashBoardPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DashboardPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminDashBoardPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DashboardPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminDashBoardPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DashboardPanel().setVisible(true);
+                new AdminDashBoardPanel().setVisible(true);
             }
         });
     }
@@ -440,7 +406,6 @@ public class DashboardPanel extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel logoutLabel1;
     // End of variables declaration//GEN-END:variables
-
     private void loadCarCategoryPanel() {
         bodyPanel.removeAll();
         CarCategoryPanel carCategoryPanel = new CarCategoryPanel();
@@ -480,5 +445,4 @@ public class DashboardPanel extends javax.swing.JFrame {
         bodyPanel.repaint();
         bodyPanel.revalidate();
     }
-
 }

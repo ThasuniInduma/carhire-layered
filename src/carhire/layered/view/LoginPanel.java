@@ -48,6 +48,7 @@ public class LoginPanel extends javax.swing.JFrame {
         usernameLabel1 = new javax.swing.JLabel();
         passwordText = new javax.swing.JPasswordField();
         passwordCheckBox = new javax.swing.JCheckBox();
+        adminButton = new javax.swing.JButton();
         bodyPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         namePanel = new javax.swing.JPanel();
@@ -110,6 +111,15 @@ public class LoginPanel extends javax.swing.JFrame {
             }
         });
 
+        adminButton.setBackground(new java.awt.Color(102, 102, 255));
+        adminButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        adminButton.setText("Admin Login");
+        adminButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
         loginPanel.setLayout(loginPanelLayout);
         loginPanelLayout.setHorizontalGroup(
@@ -132,7 +142,8 @@ public class LoginPanel extends javax.swing.JFrame {
                         .addComponent(userNameText)
                         .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(cancelButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE))
-                    .addComponent(passwordCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passwordCheckBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(adminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         loginPanelLayout.setVerticalGroup(
@@ -158,7 +169,9 @@ public class LoginPanel extends javax.swing.JFrame {
                 .addGroup(loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addGap(44, 44, 44))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(adminButton)
+                .addGap(15, 15, 15))
         );
 
         bodyPanel.setBackground(new java.awt.Color(153, 204, 255));
@@ -262,6 +275,26 @@ public class LoginPanel extends javax.swing.JFrame {
        loadUserAccPanel();
     }//GEN-LAST:event_jLabel2MouseClicked
 
+    private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
+        //new AdminDashBoardPanel().setVisible(true);
+        //this.dispose();
+        String user = userNameText.getText();
+        String pw = String.valueOf(passwordText.getPassword());
+        
+        PreparedStatement ps;
+        ResultSet rst;
+        
+        String qry = "SELECT*FROM user WHERE name = ? AND password = ?";
+        
+        if(user.equals("owner") && pw.equals("6666")){
+            new AdminDashBoardPanel().setVisible(true);
+            this.dispose();
+        }else {
+                JOptionPane.showMessageDialog(this,"Only for Owner");
+            
+        }
+    }//GEN-LAST:event_adminButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -300,6 +333,7 @@ public class LoginPanel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton adminButton;
     private javax.swing.JPanel bodyPanel;
     private javax.swing.JButton cancelButton;
     private javax.swing.JLabel jLabel1;
